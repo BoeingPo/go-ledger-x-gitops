@@ -1,0 +1,22 @@
+# Root Application — apply this once manually after ArgoCD is installed:
+#   kubectl apply -f apps/app-of-apps.yaml -n argocd
+#
+# After that, ArgoCD self-manages everything else in this directory.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/boeing/go-ledger-x-gitops  # update to your GitHub URL
+    targetRevision: main
+    path: apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: postgresql
+    targetRevision: "16.x.x"
+    helm:
+      values: |
+        auth:
+          postgresPassword: "CHANGE_ME"
+          username: "ledgerx"
+          password: "CHANGE_ME"
+          database: "ledgerx"
+        primary:
+          persistence:
+            enabled: true
+            size: 10Gi
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ledger-x
+  syncPolicy:
+    automated:
+      prune: false   # never auto-delete a database
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
