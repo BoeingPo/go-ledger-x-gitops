@@ -11,8 +11,11 @@ spec:
     targetRevision: "16.x.x"
     helm:
       values: |
+        global:
+          imagePullSecrets:
+            - name: dockerhub-creds
         auth:
-          existingSecret: postgresql-secret   # SealedSecret in secrets/ decrypts to this
+          existingSecret: postgresql-secret
           secretKeys:
             adminPasswordKey: postgres-password
             userPasswordKey: password
