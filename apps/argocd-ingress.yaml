@@ -4,6 +4,7 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
@@ -19,3 +20,7 @@ spec:
                 name: argocd-server
                 port:
                   number: 443
+  tls:
+    - hosts:
+        - argocd-bo.k3s.porrapatbo.site
+      secretName: argocd-tls

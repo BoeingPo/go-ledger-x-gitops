@@ -14,11 +14,17 @@ spec:
         ingress:
           enabled: true
           ingressClassName: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: "letsencrypt-prod"
           hosts:
             - host: "headlamp-bo.k3s.porrapatbo.site"
               paths:
                 - path: /
                   type: Prefix
+          tls:
+            - hosts:
+                - headlamp-bo.k3s.porrapatbo.site
+              secretName: headlamp-tls
         persistentVolumeClaim:
           enabled: false
         resources:
