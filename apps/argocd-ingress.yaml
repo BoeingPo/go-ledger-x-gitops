@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "argocd.yourdomain.com"   # TODO: replace with your real domain
+    - host: "argocd-bo.k3s.porrapatbo.site"
       http:
         paths:
           - path: /

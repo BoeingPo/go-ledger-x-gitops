@@ -15,7 +15,7 @@ spec:
           enabled: true
           ingressClassName: nginx
           hosts:
-            - host: "headlamp.yourdomain.com"   # TODO: replace with your real domain
+            - host: "headlamp-bo.k3s.porrapatbo.site"
               paths:
                 - path: /
                   type: Prefix
