@@ -6,34 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: postgresql
-    targetRevision: "16.x.x"
-    helm:
-      values: |
-        global:
-          imageRegistry: ghcr.io
-        auth:
-          existingSecret: postgresql-secret
-          secretKeys:
-            adminPasswordKey: postgres-password
-            userPasswordKey: password
-          username: "ledgerx"
-          database: "ledgerx"
-        primary:
-          persistence:
-            enabled: true
-            size: 10Gi
-          resources:
-            requests:
-              cpu: 200m
-              memory: 512Mi
+    repoURL: https://github.com/boeing-po/go-ledger-x-gitops
+    targetRevision: main
+    path: postgresql
   destination:
     server: https://kubernetes.default.svc
     namespace: ledger-x
   syncPolicy:
     automated:
-      prune: false   # never auto-delete a database
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
