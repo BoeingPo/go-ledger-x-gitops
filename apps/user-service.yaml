@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/BoeingPo/go-user-service
+    repoURL: https://github.com/boeing-po/go-user-service
     targetRevision: main
     path: k8s
   destination:
