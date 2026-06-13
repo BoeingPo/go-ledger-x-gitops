@@ -13,7 +13,8 @@ spec:
     targetRevision: "v1.x.x"
     helm:
       values: |
-        installCRDs: true
+        crds:
+          enabled: true
         resources:
           requests:
             cpu: 50m
