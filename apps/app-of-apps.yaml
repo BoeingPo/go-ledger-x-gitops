@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/boeing/go-ledger-x-gitops  # update to your GitHub URL
+    repoURL: https://github.com/BoeingPo/go-ledger-x-gitops
     targetRevision: main
     path: apps
   destination:

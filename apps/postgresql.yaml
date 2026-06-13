@@ -12,9 +12,11 @@ spec:
     helm:
       values: |
         auth:
-          postgresPassword: "CHANGE_ME"
+          existingSecret: postgresql-secret   # SealedSecret in secrets/ decrypts to this
+          secretKeys:
+            adminPasswordKey: postgres-password
+            userPasswordKey: password
           username: "ledgerx"
-          password: "CHANGE_ME"
           database: "ledgerx"
         primary:
           persistence:
