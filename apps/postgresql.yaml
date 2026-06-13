@@ -12,8 +12,7 @@ spec:
     helm:
       values: |
         global:
-          imagePullSecrets:
-            - name: dockerhub-creds
+          imageRegistry: ghcr.io
         auth:
           existingSecret: postgresql-secret
           secretKeys:
